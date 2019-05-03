@@ -30,12 +30,18 @@ Plug 'sheerun/vim-polyglot'
 " Color theme
 Plug 'crusoexia/vim-monokai'
 
+" Simple .git blame
+Plug 'zivyangll/git-blame.vim'
+
 " Initialize plugin system
 call plug#end()
 " ~~~ End plugin setup
 
 " Show line numbers by default!
 :set number
+
+" Key binding for the .git blame plugin
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 
 " Syntax highlighting for flow.js! (disabled by default)
