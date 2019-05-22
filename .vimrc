@@ -66,6 +66,8 @@ nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 " Use ripgrep as default search engine for Ack.vim
 let g:ackprg = 'rg --vimgrep --no-heading'
+" Bind ack-vim to ctrl+f, don't auto-open results (! modifier)
+nmap <C-f> :Ack!<space>
 
 " Use ripgrep as default search engine for fzf!
 " --files: List files that would be searched but do not search
@@ -87,7 +89,7 @@ set termguicolors
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " git-gutter: faster git updates (default is 4000ms)
-set updatetime=500
+set updatetime=200
 
 " prevent vim from wrapping words
 set nowrap
