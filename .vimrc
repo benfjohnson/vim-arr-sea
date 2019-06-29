@@ -80,6 +80,9 @@ let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 " Use ctrl+p to open fzf (not the default :Files command)
 nnoremap <silent> <C-p> :FZF -m<cr>
 
+" Font stuff:
+set guifont=Fira\ Code\ Retina:h12
+
 " Monokai theme
 syntax on
 colorscheme monokai
@@ -96,3 +99,13 @@ set nowrap
 
 " For some reason this is necessary for lightline to render?
 set laststatus=2
+
+" Show relative file path of open file in lightline!
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename'
+      \ }
+      \ }
+function! LightLineFilename()
+  return expand('%')
+endfunction
