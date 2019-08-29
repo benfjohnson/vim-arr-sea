@@ -50,7 +50,8 @@ let g:javascript_plugin_flow = 1
 " Asynchronous Lint Engine (ALE)
 " Limit linters used for JavaScript.
 let g:ale_linters = {
-\ 'javascript': ['flow', 'eslint']
+\ 'javascript': ['flow', 'eslint'],
+\ 'rust': ['rls']
 \}
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
