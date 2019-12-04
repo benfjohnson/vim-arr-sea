@@ -1,6 +1,7 @@
 " Minimalist VIm configuration
 " Author: Ben Johnson
-" March 2019
+" Created March 2019
+" Updated December 2019
 
 " ~~~ Plugin setup ~~~
 " Plugins directory:
@@ -40,7 +41,7 @@ call plug#end()
 " Show line numbers by default!
 :set number
 
-" Key binding for the .git blame plugin
+" Key binding for the .git blame plugin (\s)
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 
@@ -53,6 +54,7 @@ let g:ale_linters = {
 \ 'javascript': ['flow', 'eslint'],
 \ 'rust': ['rls']
 \}
+
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 let g:ale_sign_error = 'X' " could use emoji
