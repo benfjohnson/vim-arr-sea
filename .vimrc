@@ -34,6 +34,20 @@ Plug 'crusoexia/vim-monokai'
 " Simple .git blame
 Plug 'zivyangll/git-blame.vim'
 
+" File system explorer
+Plug 'preservim/nerdtree'
+
+" Autocompletion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Use deoplete for auto-complete.
+let g:deoplete#enable_at_startup = 1
+
 " Initialize plugin system
 call plug#end()
 " ~~~ End plugin setup
@@ -48,10 +62,14 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 " Syntax highlighting for flow.js! (disabled by default)
 let g:javascript_plugin_flow = 1
 
+" Allegedly, TypeScript doesn't play nice with the old regex engine
+" Set it to automatically choose an engine
+:set re=0
+
 " Asynchronous Lint Engine (ALE)
 " Limit linters used for JavaScript.
 let g:ale_linters = {
-\ 'javascript': ['flow', 'eslint'],
+\ 'javascript': ['eslint'],
 \ 'rust': ['rls']
 \}
 
@@ -112,3 +130,12 @@ let g:lightline = {
 function! LightLineFilename()
   return expand('%')
 endfunction
+
+" NERDTree: File system explorer!
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Support for OCAML's Merlin tooling
+let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+     execute "set rtp+=" . g:opamshare . "/merlin/vim"
