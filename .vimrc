@@ -37,6 +37,8 @@ Plug 'zivyangll/git-blame.vim'
 " File system explorer
 Plug 'preservim/nerdtree'
 
+Plug 'rust-lang/rust.vim'
+
 " Autocompletion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -70,7 +72,7 @@ let g:javascript_plugin_flow = 1
 " Limit linters used for JavaScript.
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'rust': ['rls']
+\ 'rust': ['analyzer']
 \}
 
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
@@ -136,6 +138,8 @@ endfunction
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
+" Un-comment this section if you'd like to use OCAML and have things set up
+" locally
 " Support for OCAML's Merlin tooling
-let g:opamshare = substitute(system('opam var share'),'\n$','','''')
-     execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+"     execute "set rtp+=" . g:opamshare . "/merlin/vim"
