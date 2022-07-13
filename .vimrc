@@ -54,6 +54,11 @@ let g:deoplete#enable_at_startup = 1
 call plug#end()
 " ~~~ End plugin setup
 
+" Rust formatting preferences:
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
 " Show line numbers by default!
 :set number
 
@@ -137,6 +142,8 @@ endfunction
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Show hidden files
+let NERDTreeShowHidden=1
 
 " Un-comment this section if you'd like to use OCAML and have things set up
 " locally
