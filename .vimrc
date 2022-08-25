@@ -77,7 +77,8 @@ let g:javascript_plugin_flow = 1
 " Limit linters used for JavaScript.
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'rust': ['analyzer']
+\ 'rust': ['analyzer'],
+\ 'typescript': ['tsserver']
 \}
 
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
